@@ -1,0 +1,55 @@
+baseFontURL = "../fonts/Poppins/Poppins-"
+borderRadiusSize = 10px
+fontStats = {
+  "ExtraLight.ttf": 200,
+  "Regular.ttf": 400,
+  "SemiBold.ttf": 600
+}
+primaryColor = {
+  red: hsl(0,78%,62%),
+  cyan: hsl(180,62%, 55%),
+  orange: hsl(34,97%, 64%),
+  blue: hsl(212, 86%, 64%)
+}
+
+neutralColor = {
+  grey500: hsl(234,12%,34%),
+  grey400: hsl(212,6%, 44%),
+  white: hsl(0,0%,100%)
+}
+
+border-top(color)
+  border-block-start: 4px solid color
+
+get-shadows(initX, initY, initBlur, color, alpha, layers, ratio)
+  shadow = ''
+  x = ()
+  y = ()
+  blur = ()
+  for num in 1..layers
+    x = num == 1 ? initX:x * ratio
+    y = num == 1 ? initY:y * ratio
+    blur = num == 1 ? initBlur:blur * ratio
+    newColor = hsla(hue(color), saturation(color), lightness(color), alpha)
+
+    if num > 1
+      shadow += ', '
+
+    shadow += unit(x, 'px') unit(y, 'px') unit(blur, 'px') newColor
+
+  return unquote(shadow)
+
+media-desktop()
+  @media screen and (min-width: 60rem)
+    {block}
+
+$head-size
+  font-size: clamp(0.75em, calc(1em + 2.5vw), 1.75em)
+
+$grey-color
+  color: neutralColor.grey500
+
+$card-margin
+  margin-block-start: clamp(2.375em, calc(1em + 3vw), 2.875em)
+  +media-desktop()
+    margin-block-start: 0

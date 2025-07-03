@@ -1,0 +1,74 @@
+@require "utility"
+@require "global"
+
+header
+  text-align: center;
+  margin-block-start: clamp(2em, calc(1em + 3.125vw), 3em)
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column
+
+  & p:first-child
+    @extend $head-size
+    font-weight: 200
+    margin-block-end: 0
+    @extend $grey-color
+
+  h1
+    @extend $head-size
+    @extend $grey-color
+    margin-block-start: 0
+
+  & p:last-child
+    max-inline-size: 36em
+    @extend $grey-color
+    margin-block-start: 0
+
+section
+  border-start-start-radius: borderRadiusSize
+  border-end-start-radius: borderRadiusSize
+  border-start-end-radius: borderRadiusSize
+  border-end-end-radius: borderRadiusSize
+  box-shadow: get-shadows(0, 2.5px, 8px, neutralColor.grey400, 0.1, 4, 1.5)
+  max-inline-size: clamp(18em, calc(1em + 4vw), 19em)
+  block-size: 15em
+  padding-inline: 2em
+  padding-block: clamp(1em, calc(1em + 0.625vw), 1.25em)
+
+  & h2
+    font-size: clamp(1.25em, calc(1em + 0.75vw), 1.375em)
+    margin-block-end: 0
+
+  & p
+    color: neutralColor.grey500
+    margin-block-start: clamp(0.375em, 1vw, 0.5em)
+    font-size: clamp(0.875em, calc(0.375em + 1vw), 0.9375em)
+
+  & div
+    display: flex;
+    justify-content: end
+    padding-block: 1.375em
+
+  &:nth-child(1)
+    border-top(primaryColor.cyan)
+    +media-desktop()
+      grid-area: supervisor
+
+  &:nth-child(2)
+    @extend $card-margin
+    border-top(primaryColor.red)
+    +media-desktop()
+      grid-area: team
+
+  &:nth-child(3)
+    @extend $card-margin
+    border-top(primaryColor.orange)
+    +media-desktop()
+      grid-area: karma
+
+  &:nth-child(4)
+    @extend $card-margin
+    border-top(primaryColor.blue)
+    +media-desktop()
+      grid-area: calculator
